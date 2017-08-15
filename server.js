@@ -29,6 +29,20 @@ app.post('/todos/insert',function (req,res) {
     });
 
 });
+app.post('/todos/insertMany',function (req,res) {
+
+    database.insertMany(req.body.todo,function (data) {
+
+        res.send(data);
+    });
+
+});
+
+app.get('/todos/getAllInventory',function (req,res) {
+    database.queryInventory(function (data) {
+        res.send(data);
+    }) ;
+});
 
 var database=require('./database');
 database.connectServer(ser);
@@ -37,6 +51,6 @@ database.connectServer(ser);
 * call is called and coustom server is conectde */
 function ser() {
     app.listen(port,function () {
-        console.log("Hey your node server is running");
+        console.log("Hey youra node server is running");
     })
 }
