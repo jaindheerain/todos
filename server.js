@@ -31,15 +31,29 @@ app.post('/todos/insert',function (req,res) {
 });
 app.post('/todos/insertMany',function (req,res) {
 
-    database.insertMany(req.body.todo,function (data) {
+    database.insertPrac(function (data) {
+        res.send(data);
+    })
+    /*database.insertMany(req.body.todo,function (data) {
 
         res.send(data);
     });
-
+*/
 });
 
-app.get('/todos/getAllInventory',function (req,res) {
+app.post('/todos/edit',function (req,res) {
+        database.editthatshit(req.body.todo,function (data) {
+            res.send(data);
+        })
+});
+
+app.post('/todos/getAllInventory',function (req,res) {
     database.queryInventory(function (data) {
+        res.send(data);
+    }) ;
+});
+app.post('/todos/prac',function (req,res) {
+    database.insertMongoPrac(function (data) {
         res.send(data);
     }) ;
 });
